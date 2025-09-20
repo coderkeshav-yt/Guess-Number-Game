@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-zinc-50 min-h-screen;
+}
+
+body {
+  background: radial-gradient(
+      142% 91% at 50% 50%,
+      rgba(34, 14, 18, 0.253) 0%,
+      rgb(20, 4, 5) 81%
+    ),
+    url("/squidgamebg.webp"), rgb(22, 4, 5);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  @apply bg-rose-600 mt-3 rounded-md uppercase active:scale-95 hover:bg-rose-500 py-2 text-sm font-medium  transition-all;
+  box-shadow: 0 0 20px rgba(244, 63, 93, 0.384);
+}
+
+::selection {
+  @apply bg-rose-700 text-rose-50;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.neu {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 60px #171818, -20px -20px 60px #141414;
+}
+.txt-span{
+  @apply text-red-300;
+}
