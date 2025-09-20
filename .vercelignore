@@ -1,0 +1,68 @@
+# Dependency directories
+node_modules/
+.next/
+
+# Build files
+out/
+dist/
+build/
+
+# Environment variables
+.env*
+!.env.example
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+.vercel/
+.idea/
+.vscode/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test and coverage directories
+coverage/
+__tests__/
+*.test.*
+*.spec.*
+
+# Misc
+.next/cache/
+.turbo/
+.vercel_build_output/
+!.vercel_build_output/static/
+!.vercel_build_output/functions/
+
+# Ignore large files
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+public/sw.js.map
+public/workbox-*.js.map
+public/worker-*.js.map
+
+# Ignore PWA files
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+public/sw.js.map
+public/workbox-*.js.map
+public/worker-*.js.map
+public/manifest.json
+public/icon-*.png
+public/apple-touch-icon.png
+public/favicon.ico
+
+# Ignore source maps
+**/*.map
