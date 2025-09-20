@@ -160,44 +160,20 @@ public/
 
 ---
 
-## 🎨 Customization
-
-### 🎵 Audio Settings
-- Background music auto-plays after user interaction
-- Volume set to 50% for comfortable experience
-- Persistent music preference saved in localStorage
-
-### 🎨 Theming
-- Squid Game inspired color scheme
-- Dark theme with rose/red accents
-- Glassmorphism effects with backdrop blur
-
-### 🎮 Game Logic
-- Configurable difficulty levels
-- Extensible scoring system
-- Randomized number generation
-
----
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
 1. Connect your GitHub repository
 2. Auto-deployment on push
-3. Zero configuration needed
 
 ### Other Platforms
 ```bash
 # Build static files
 npm run build
 
-# Deploy the 'out' folder to:
-# - Netlify
-# - GitHub Pages  
-# - Any static hosting service
-```
 
----
+
 
 ## 🤝 Contributing
 
@@ -215,14 +191,7 @@ We welcome contributions! Here's how to get started:
    ```
 5. **Push and create a Pull Request**
 
-### Development Guidelines
-- Follow TypeScript best practices
-- Use Tailwind for styling
-- Maintain responsive design
-- Test on multiple devices
-- Update documentation
 
----
 
 ## 📝 License
 
@@ -230,14 +199,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 🙏 Acknowledgments
-
-- **Squid Game** - Inspiration for the theme and aesthetics
-- **Next.js Team** - Amazing framework and documentation
-- **Vercel** - Excellent deployment platform
-- **Tailwind CSS** - Beautiful utility-first CSS framework
-
----
 
 ## 🎉 Enjoy the Game!
 
@@ -253,5 +214,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 <div align="center">
-  <p>Made with ❤️ and ☕ by <a href="https://github.com/Xeven777">Xeven777</a></p>
+  <p>Made with ❤️ by <a href="https://github.com/coderkeshav-yt">Keshav Singh </a></p>
 </div>
