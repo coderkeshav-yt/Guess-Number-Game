@@ -16,49 +16,21 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: ['i.imgur.com'],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
   
   // Enable trailing slash for better compatibility
   trailingSlash: true,
   
   // Disable React StrictMode for static export
-  reactStrictMode: false,
+  reactStrictMode: !isProd,
   
   // Disable output file tracing for static export
   outputFileTracing: false,
   
   // Disable source maps in production
   productionBrowserSourceMaps: false,
-  
-  // ESLint configuration
-  eslint: {
-    ignoreDuringBuilds: false, // Enable ESLint during build
-  },
-  
-  // TypeScript configuration
-  typescript: {
-    ignoreBuildErrors: false, // Enable TypeScript checking
-  },
-  
-  // Webpack configuration
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-        os: false,
-      };
-    }
-    return config;
-  },
-  
-  // Disable React's Strict Mode in production
-  reactStrictMode: !isProd,
-  
-  // Configure page extensions
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
   
   // ESLint configuration
   eslint: {
@@ -70,11 +42,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Add webpack configuration to handle potential circular dependencies
-  webpack: (config, { isServer, dev }) => {
-    // Add custom webpack configuration
+  // Configure page extensions
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  
+  // Webpack configuration
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
     if (!isServer) {
-      // Fixes npm packages that depend on `fs` module
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
@@ -90,48 +64,6 @@ const nextConfig = {
     });
 
     return config;
-  },
-  
-  // Configure build output
-  distDir: '.next',
-  
-  // Configure images
-  images: {
-    domains: ['i.imgur.com'],
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60,
-  },
-  
-  // Configure TypeScript
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: false,
-  },
-  
-  // Configure ESLint
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: false,
-  },
-  
-  // Disable output file tracing to prevent stack overflow
-  outputFileTracing: false,
-  
-  // Configure static exports
-  trailingSlash: false,
-  
-  // Configure public runtime config
-  publicRuntimeConfig: {
-    // Add any public runtime config here
-  },
-  
-  // Configure server runtime config
-  serverRuntimeConfig: {
-    // Add any server runtime config here
   },
 };
 

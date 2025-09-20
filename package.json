@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export -o out",
     "start": "npx serve out -p 3000",
     "lint": "next lint",
-    "build:static": "npm run build && npm run export"
+    "build:static": "next build"
   },
   "dependencies": {
     "framer-motion": "^12.23.16",

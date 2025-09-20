@@ -9,12 +9,10 @@
       }
     }
   ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production",
-      "NODE_OPTIONS": "--max-old-space-size=4096"
-    },
-    "output": "out"
+  "buildCommand": "npm run build",
+  "env": {
+    "NODE_ENV": "production",
+    "NODE_OPTIONS": "--max-old-space-size=4096"
   },
   "routes": [
     {
