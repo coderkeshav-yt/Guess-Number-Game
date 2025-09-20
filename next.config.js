@@ -1,35 +1,53 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactStrictMode: true,
   
-  // Disable static export for now to fix routing issues
-  // output: 'export',
+  // Only enable static export in production
+  ...(isProd ? { output: 'export' } : {}),
   
-  // Remove assetPrefix to use relative paths
-  // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://guess-number-game-2sez.vercel.app' : '',
+  // Base path configuration (empty for root domain)
+  basePath: '',
   
-  // Base URL for API requests (if any)
-  // basePath: process.env.NODE_ENV === 'production' ? '' : '',
+  // Asset prefix for CDN (if needed)
+  assetPrefix: isProd ? '' : undefined,
   
   // Image optimization
   images: {
+    unoptimized: isProd, // Only unoptimized for static export
     domains: ['i.imgur.com'],
-    unoptimized: true, // Required for static export if enabled
   },
-  
-  // Ensure proper source map generation
-  productionBrowserSourceMaps: false,
   
   // Disable source maps in production
   productionBrowserSourceMaps: false,
   
-  // Add experimental configuration to help with build issues
-  experimental: {
-    workerThreads: false,
-    cpus: 1,
-    // Disable webpack's cache to prevent memory issues
-    webpackBuildWorker: false,
+  // ESLint configuration
+  eslint: {
+    ignoreDuringBuilds: false, // Enable ESLint during build
   },
+  
+  // TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: false, // Enable TypeScript checking
+  },
+  
+  // Webpack configuration
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        os: false,
+      };
+    }
+    return config;
+  },
+  
+  // Disable React's Strict Mode in production
+  reactStrictMode: !isProd,
   
   // Configure page extensions
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
