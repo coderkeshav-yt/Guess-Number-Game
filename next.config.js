@@ -2,20 +2,23 @@
 const nextConfig = {
   reactStrictMode: true,
   
-  // Static export configuration
-  output: 'export',
+  // Disable static export for now to fix routing issues
+  // output: 'export',
   
-  // Base path configuration (uncomment if needed)
-  // basePath: process.env.NODE_ENV === 'production' ? '/your-base-path' : '',
+  // Remove assetPrefix to use relative paths
+  // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://guess-number-game-2sez.vercel.app' : '',
   
-  // Asset prefix configuration
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://guess-number-game-2sez.vercel.app' : '',
+  // Base URL for API requests (if any)
+  // basePath: process.env.NODE_ENV === 'production' ? '' : '',
   
   // Image optimization
   images: {
-    unoptimized: true, // Required for static export
     domains: ['i.imgur.com'],
+    unoptimized: true, // Required for static export if enabled
   },
+  
+  // Ensure proper source map generation
+  productionBrowserSourceMaps: false,
   
   // Disable source maps in production
   productionBrowserSourceMaps: false,
