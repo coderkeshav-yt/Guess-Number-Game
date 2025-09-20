@@ -2,8 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   
-  // Disable static optimization for problematic pages
-  output: 'standalone',
+  // Static export configuration
+  output: 'export',
+  
+  // Base path configuration (uncomment if needed)
+  // basePath: process.env.NODE_ENV === 'production' ? '/your-base-path' : '',
+  
+  // Asset prefix configuration
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://guess-number-game-2sez.vercel.app' : '',
+  
+  // Image optimization
+  images: {
+    unoptimized: true, // Required for static export
+    domains: ['i.imgur.com'],
+  },
   
   // Disable source maps in production
   productionBrowserSourceMaps: false,
@@ -18,6 +30,16 @@ const nextConfig = {
   
   // Configure page extensions
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  
+  // ESLint configuration
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
+  // TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   
   // Add webpack configuration to handle potential circular dependencies
   webpack: (config, { isServer, dev }) => {

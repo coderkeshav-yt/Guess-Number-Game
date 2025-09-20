@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "next build",
-    "vercel-build": "NODE_OPTIONS='--max-old-space-size=4096' next build",
+    "build": "next build && next export -o out",
+    "vercel-build": "next build && next export -o out",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export -o out"
   },
   "dependencies": {
     "framer-motion": "^12.23.16",
