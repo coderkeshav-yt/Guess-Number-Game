@@ -17,17 +17,17 @@
   "routes": [
     {
       "src": "/_next/static/(?:[^/]+/pages|chunks|runtime|css|media)/.+\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json)$",
-      "dest": "/_next/static/$1",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
-      }
+      },
+      "continue": true
     },
     {
       "src": "/(.*\\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|json))",
-      "dest": "/$1",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
-      }
+      },
+      "continue": true
     },
     {
       "src": "/",
@@ -42,35 +42,6 @@
       "headers": {
         "cache-control": "public, max-age=0, must-revalidate"
       }
-    }
-  ],
-  "headers": [
-    {
-      "source": "/_next/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|json))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
     }
   ]
 }
