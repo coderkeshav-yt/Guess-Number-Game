@@ -1,54 +1,257 @@
-# Guess The Number Game
+# 🎮 Guess The Number - Squid Game Edition
 
-### Test your luck and intuition in this thrilling guessing game built with Next.js 14!
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-14.0.3-black?style=for-the-badge&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/PWA-Enabled-purple?style=for-the-badge" alt="PWA">
+  <img src="https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind">
+</div>
 
-## Features
+<div align="center">
+  <h3>🎯 Test your luck and intuition in this thrilling number guessing game inspired by Squid Game!</h3>
+  <p>Built with modern web technologies for an immersive gaming experience</p>
+</div>
 
--  **Beautiful UI/UX:** Made in thrilling Squid Game theme and also added thrilling bg-music.
--  **Smart algorithm:** The game adjusts its difficulty based on your performance, keeping you on your toes.
-- ⚡ **Fast and responsive:** Built with Next.js, the game delivers a seamless and performant experience.
--  **Installable as an app:** Enjoy the game offline and on the go with the installable app feature (PWA).
--  **Cross-platform compatibility:** Play on your desktop or mobile device seamlessly.
+---
 
-## Getting Started
+## ✨ Features
 
-1. **Clone the repository:**
+### 🎨 **Immersive Experience**
+- 🎭 **Squid Game Theme**: Authentic UI/UX design inspired by the hit Netflix series
+- 🎵 **Background Music**: Atmospheric soundtrack that enhances gameplay
+- 🌟 **Smooth Animations**: Built with Framer Motion for fluid transitions
+- 📱 **Responsive Design**: Perfect experience on desktop, tablet, and mobile
 
+### 🎮 **Game Features**
+- 🎲 **Three Difficulty Levels**: 
+  - Easy Peasy (3 attempts, 0-10 range)
+  - Umm Medium (5 attempts, 0-50 range) 
+  - Damn Hard (7 attempts, 0-120 range)
+- 🧠 **Smart Algorithm**: Adaptive difficulty based on performance
+- 🏆 **Scoring System**: Points based on attempts taken
+- 💡 **Intelligent Hints**: Get directional feedback for your guesses
+
+### 📱 **Progressive Web App (PWA)**
+- 📲 **Installable**: Add to home screen on any device
+- 🔄 **Offline Support**: Play without internet connection
+- ⚡ **Fast Loading**: Optimized for performance
+- 🔔 **Native App Feel**: Full-screen experience
+
+### 🛠️ **Technical Excellence**
+- ⚡ **Next.js 14**: Latest App Router with RSC
+- 🎯 **TypeScript**: Full type safety
+- 🎨 **Tailwind CSS**: Modern styling
+- 🌐 **Static Export**: Fast deployment anywhere
+- 🔊 **Audio Context**: Smart music management
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- npm or bun package manager
+
+### Installation
+
+1. **Clone the repository**
    ```bash
-    https://github.com/Xeven777/guess-the-num.git
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
+   git clone https://github.com/Xeven777/guess-the-num.git
    cd guess-the-num
-   npm/bun install
    ```
 
-3. **Start the development server:**
-
+2. **Install dependencies**
    ```bash
-   npm/bun run dev
+   npm install
+   # or
+   bun install
    ```
 
-4. **Open in your browser:**
+3. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   bun run dev
+   ```
 
-   Visit `http://localhost:3000` to play the game.
+4. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
-## Installing as an App
+### 🏗️ Build for Production
 
-1. **Open the game in your browser.**
-2. **Click the "Install" button** (usually in the browser's menu).
-3. **Follow the prompts to add the game to your home screen.**
+```bash
+# Build static export
+npm run build
 
-## Contributing
+# Preview production build
+npm start
+```
 
-We welcome contributions! Feel free to open issues or pull requests to make the game even better.
+---
 
-## License
+## 🎯 How to Play
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+1. **Choose Your Difficulty**: Select from three challenging levels
+2. **Enable Music** (Optional): Toggle background music for immersion
+3. **Start Guessing**: Enter numbers within the given range
+4. **Follow Hints**: Use "higher" or "lower" feedback
+5. **Win or Lose**: Beat the game within your attempt limit!
+6. **Track Your Score**: Points awarded based on efficiency
 
-## Enjoy the Game!
+---
 
-Have fun testing your guessing skills and let us know what you think! 
+## 📱 PWA Installation
+
+### Desktop (Chrome, Edge, Safari)
+1. Visit the game URL
+2. Look for the install icon in the address bar
+3. Click "Install" and confirm
+
+### Mobile (iOS/Android)
+1. Open in Safari (iOS) or Chrome (Android)
+2. Tap the share button
+3. Select "Add to Home Screen"
+4. Confirm installation
+
+### Features After Installation
+- 📲 App icon on home screen
+- 🔄 Offline gameplay
+- ⚡ Faster loading
+- 📱 Native app experience
+
+---
+
+## 🏗️ Architecture
+
+### Tech Stack
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **State Management**: React Context API
+- **Build**: Static Export
+- **Deployment**: Vercel
+
+### Project Structure
+```
+src/
+├── app/
+│   ├── page.tsx              # Home page
+│   ├── layout.tsx            # Root layout
+│   ├── globals.css           # Global styles
+│   └── game/[id]/            # Dynamic game routes
+├── components/
+│   ├── AudioProvider.tsx     # Audio context
+│   ├── MusicBtn.tsx          # Music toggle
+│   ├── Level.tsx             # Difficulty selector
+│   ├── Logo.tsx              # Game logo
+│   └── Footer.jsx            # Footer component
+├── context/
+│   └── AudioContext.ts       # Audio state management
+public/
+├── manifest.json             # PWA configuration
+├── music sg.m4a              # Background music
+├── squidgamebg.webp          # Background image
+└── *.png, *.ico              # Icons and assets
+```
+
+---
+
+## 🎨 Customization
+
+### 🎵 Audio Settings
+- Background music auto-plays after user interaction
+- Volume set to 50% for comfortable experience
+- Persistent music preference saved in localStorage
+
+### 🎨 Theming
+- Squid Game inspired color scheme
+- Dark theme with rose/red accents
+- Glassmorphism effects with backdrop blur
+
+### 🎮 Game Logic
+- Configurable difficulty levels
+- Extensible scoring system
+- Randomized number generation
+
+---
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository
+2. Auto-deployment on push
+3. Zero configuration needed
+
+### Other Platforms
+```bash
+# Build static files
+npm run build
+
+# Deploy the 'out' folder to:
+# - Netlify
+# - GitHub Pages  
+# - Any static hosting service
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Commit with conventional commits**
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+5. **Push and create a Pull Request**
+
+### Development Guidelines
+- Follow TypeScript best practices
+- Use Tailwind for styling
+- Maintain responsive design
+- Test on multiple devices
+- Update documentation
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Squid Game** - Inspiration for the theme and aesthetics
+- **Next.js Team** - Amazing framework and documentation
+- **Vercel** - Excellent deployment platform
+- **Tailwind CSS** - Beautiful utility-first CSS framework
+
+---
+
+## 🎉 Enjoy the Game!
+
+<div align="center">
+  <p>Have fun testing your guessing skills!</p>
+  <p>⭐ Star this repo if you enjoyed the game!</p>
+  
+  <a href="#">🎮 Play Now</a> • 
+  <a href="#">🐛 Report Bug</a> • 
+  <a href="#">💡 Request Feature</a>
+</div>
+
+---
+
+<div align="center">
+  <p>Made with ❤️ and ☕ by <a href="https://github.com/Xeven777">Xeven777</a></p>
+</div>
