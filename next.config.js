@@ -2,22 +2,30 @@
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  reactStrictMode: true,
-  
-  // Only enable static export in production
-  ...(isProd ? { output: 'export' } : {}),
+  // Enable static export
+  output: 'export',
+  distDir: 'out',
   
   // Base path configuration (empty for root domain)
   basePath: '',
   
-  // Asset prefix for CDN (if needed)
+  // Asset prefix for static export
   assetPrefix: isProd ? '' : undefined,
   
   // Image optimization
   images: {
-    unoptimized: isProd, // Only unoptimized for static export
+    unoptimized: true,
     domains: ['i.imgur.com'],
   },
+  
+  // Enable trailing slash for better compatibility
+  trailingSlash: true,
+  
+  // Disable React StrictMode for static export
+  reactStrictMode: false,
+  
+  // Disable output file tracing for static export
+  outputFileTracing: false,
   
   // Disable source maps in production
   productionBrowserSourceMaps: false,
