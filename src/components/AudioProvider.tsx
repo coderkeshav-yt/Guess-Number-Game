@@ -1,16 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-type AudioContextType = {
-  isMusicEnabled: boolean;
-  toggleMusic: () => void;
-};
-
-// Create the context with a default value
-const AudioContext = createContext<AudioContextType | null>(null);
-
-export { AudioContext };
+import { useState, useEffect, ReactNode, useContext } from 'react';
+import { AudioContext } from '@/context/AudioContext';
 
 export function AudioProvider({ children }: { children: ReactNode }) {
   const [isMusicEnabled, setIsMusicEnabled] = useState(false);
@@ -64,3 +55,5 @@ export function useAudio() {
   }
   return context;
 }
+
+export { AudioContext };

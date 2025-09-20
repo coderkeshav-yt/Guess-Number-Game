@@ -7,8 +7,6 @@ import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export { AudioContext } from "@/components/AudioProvider";
-
 export const metadata: Metadata = {
   title: "Guess The Number 7️⃣",
   description: "A Simple Guessing Game made with Next.js",
