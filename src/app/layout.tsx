@@ -1,60 +1,13 @@
-"use client";
-import { createContext, useContext, useState, useEffect } from 'react';
 import type { Metadata } from "next";
-import Footer from "../components/Footer";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AudioProvider } from "@/components/AudioProvider";
 import MusicBtn from "@/components/MusicBtn";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-type AudioContextType = {
-  isMusicEnabled: boolean;
-  toggleMusic: () => void;
-};
-
-export const AudioContext = createContext<AudioContextType>({
-  isMusicEnabled: false,
-  toggleMusic: () => {},
-});
-
-export function AudioProvider({ children }: { children: React.ReactNode }) {
-  const [isMusicEnabled, setIsMusicEnabled] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Load saved preference from localStorage on mount
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedPreference = localStorage.getItem('musicEnabled');
-      if (savedPreference !== null) {
-        setIsMusicEnabled(savedPreference === 'true');
-      }
-      setIsMounted(true);
-    }
-  }, []);
-
-  // Save preference to localStorage when it changes
-  useEffect(() => {
-    if (isMounted) {
-      localStorage.setItem('musicEnabled', String(isMusicEnabled));
-    }
-  }, [isMusicEnabled, isMounted]);
-
-  const toggleMusic = () => {
-    setIsMusicEnabled(prev => !prev);
-  };
-
-  // Don't render children until we've loaded the saved preference
-  if (!isMounted) {
-    return null;
-  }
-
-  return (
-    <AudioContext.Provider value={{ isMusicEnabled, toggleMusic }}>
-      {children}
-    </AudioContext.Provider>
-  );
-}
+export { AudioContext } from "@/components/AudioProvider";
 
 export const metadata: Metadata = {
   title: "Guess The Number 7️⃣",

@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import triangle from "../../public/triangle-svgrepo-com.svg";
 import square from "../../public/square-svgrepo-com.svg";
-import { AudioContext } from "@/app/layout";
+import { useAudio } from "@/components/AudioProvider";
 
 const MusicBtn = () => {
   const [playing, setPlaying] = useState(false);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
-  const audioContext = useContext(AudioContext);
+  const { isMusicEnabled, toggleMusic } = useAudio();
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
   // Initialize audio element on mount
@@ -35,7 +35,7 @@ const MusicBtn = () => {
     const handleFirstInteraction = () => {
       if (!hasUserInteracted) {
         setHasUserInteracted(true);
-        if (audioContext?.isMusicEnabled) {
+        if (isMusicEnabled) {
           audio.muted = false;
           audio.play().catch(console.error);
         }
@@ -55,14 +55,14 @@ const MusicBtn = () => {
         window.removeEventListener(event, handleFirstInteraction);
       });
     };
-  }, [hasUserInteracted, audioContext?.isMusicEnabled]);
+  }, [hasUserInteracted, isMusicEnabled]);
 
   // Handle play/pause based on isMusicEnabled
   const handlePlayback = useCallback(async () => {
-    if (!audioElement || !audioContext) return;
+    if (!audioElement) return;
 
     try {
-      if (audioContext.isMusicEnabled) {
+      if (isMusicEnabled) {
         // If user hasn't interacted yet, we'll handle it on the next interaction
         if (!hasUserInteracted) {
           audioElement.muted = true;
@@ -79,20 +79,18 @@ const MusicBtn = () => {
     } catch (error) {
       console.error("Error controlling audio:", error);
     }
-  }, [audioElement, audioContext, hasUserInteracted]);
+  }, [audioElement, isMusicEnabled, hasUserInteracted]);
 
   useEffect(() => {
     handlePlayback();
   }, [handlePlayback]);
-
-  if (!audioContext) return null;
 
   const handleClick = () => {
     // This click will help unlock audio in some browsers
     if (!hasUserInteracted) {
       setHasUserInteracted(true);
     }
-    audioContext.toggleMusic();
+    toggleMusic();
   };
 
   return (

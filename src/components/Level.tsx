@@ -1,12 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState, useContext } from "react";
-import { AudioContext } from "@/app/layout";
+import React, { useState } from "react";
+import { useAudio } from "@/components/AudioProvider";
 
 const Level = () => {
   const router = useRouter();
-  const { isMusicEnabled, toggleMusic } = useContext(AudioContext) || {};
+  const { isMusicEnabled, toggleMusic } = useAudio();
   const [level, setLevel] = useState(3);
 
   const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
