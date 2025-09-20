@@ -4,7 +4,6 @@ const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   // Enable static export
   output: 'export',
-  distDir: 'out',
   
   // Base path configuration (empty for root domain)
   basePath: '',
