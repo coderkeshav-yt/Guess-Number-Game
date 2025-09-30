@@ -3,14 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import prize from "../../../../public/prize.jpg";
-import die from "../../../../public/die.webp";
+const prize = "/prize.jpg";
+const die = "/die.webp";
 import Logo from "@/components/Logo";
 
 type Props = {
   id: string;
 };
-
 const GameComponent = ({ id }: Props) => {
   const router = useRouter();
   const [guessesTaken, setGuessesTaken] = useState<number>(0);
@@ -130,12 +129,15 @@ const GameComponent = ({ id }: Props) => {
                 Play Again
               </button>
               <p>{gameResult}</p>
-              <Image
-                src={gameWon ? prize : die}
-                alt="end"
-                width={100}
-                className="mx-auto my-6 w-3/4"
-              />
+              <div className="relative w-3/4 h-48 mx-auto my-6">
+                <Image
+                  src={gameWon ? prize : die}
+                  alt={gameWon ? "Prize" : "Game Over"}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </>
           )}
         </form>
